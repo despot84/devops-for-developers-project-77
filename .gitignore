@@ -2,3 +2,4 @@
 del_*
 secret.*
 /terraform/.terraform
+*.lock.hcl
