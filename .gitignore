@@ -1,3 +1,4 @@
 .idea
 del_*
 secret.*
+/terraform/.terraform
