@@ -4,6 +4,10 @@ terraform {
       source  = "taliesins/hyperv"
       version = "~> 1.0"
     }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.0"
+    }    
   }
 
   required_version = ">= 0.13"
@@ -26,7 +30,8 @@ provider "hyperv" {
   
   # tls_insecure = true
 
-  # # Способ 3: Через SSH не работает
+  # # Способ 3: Через SSH - не работает
+  # ssh_host = var.hyperv_host
   # ssh_user = var.hyperv_user
   # ssh_password = var.hyperv_password
   # ssh_port = var.hyperv_ssh_port
