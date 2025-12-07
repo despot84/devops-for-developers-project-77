@@ -1,0 +1,18 @@
+---
+
+datadog_site: "us5.datadoghq.com"
+apps_localhost: "http://127.0.0.1:3000"
+datadog_api_key: "{{ vault_datadog_api_key }}" 
+datadog_checks:
+  http_check:
+    init_config:
+    instances:
+      - name: app_check
+        url: '{{ apps_localhost }}'
+
+
+db_postgres: "{{ vault_some_db_postgres }}"
+db_database: "{{ vault_some_db_database }}"
+db_username: "{{ vault_some_db_username }}"
+db_password: "{{ vault_some_db_password }}"
+db_port: "{{ vault_some_db_port }}"

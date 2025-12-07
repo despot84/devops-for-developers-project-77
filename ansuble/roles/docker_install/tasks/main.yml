@@ -1,0 +1,37 @@
+- name: Обновление пакетов
+  ansible.builtin.apt:
+    update_cache: true
+  become: true
+
+- name: Установка необходимых зависимостей
+  ansible.builtin.apt:
+    name:
+      - apt-utils
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: present
+  become: true
+
+- name: Добавление GPG ключа Docker
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: true
+
+- name: Получение версии Ubuntu
+  ansible.builtin.setup:
+
+- name: Добавление репозитория Docker
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+    state: present
+  become: true
+
+- name: Установка Docker CE
+  ansible.builtin.apt:
+    name: docker-ce
+    state: present
+    update_cache: true
+  become: true

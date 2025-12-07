@@ -1,0 +1,6 @@
+ansible_connection: ssh
+ansible_shell_type: sh
+ansible_ssh_private_key_file: "~/.ssh/id_rsa"
+
+redmine_version: "5.1"
+redmine_port: 3000

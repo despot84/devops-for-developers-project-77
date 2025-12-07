@@ -1,0 +1,4 @@
+nginx_install_image: "nginx:latest"
+nginx_install_container_name: "nginx-load-balancer"
+nginx_install_host_port: 80
+nginx_install_container_port: 80
