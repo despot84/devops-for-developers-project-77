@@ -3,3 +3,4 @@ del_*
 secret.*
 /terraform/.terraform
 *.lock.hcl
+terraform/terraform.tfvars
