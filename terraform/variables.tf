@@ -69,7 +69,7 @@ variable "vm_name" {
 variable "iso_path" {
   description = "Path to ISO file for installation"
   type        = string
-  default     = "C:\\ISOs\\ubuntu-22.04.iso"
+  default     = "S:\\Distrib\\OS\\ubuntu-24.04.3-desktop-amd64.iso"
 }
 
 variable "vm_memory_gb" {
@@ -88,4 +88,19 @@ variable "disk_size_gb" {
   description = "System disk size in GB"
   type        = number
   default     = 40
+}
+
+variable "datadog_api_key" {
+  type        = string
+  sensitive   = true
+}
+
+variable "datadog_app_key" {
+  type        = string
+  sensitive   = true
+}
+
+variable "datadog_api_url" {
+  type        = string
+  default     = "https://api.datadoghq.eu"
 }
