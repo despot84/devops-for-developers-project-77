@@ -1,38 +1,29 @@
 terraform {
   required_providers {
-    hyperv = {
-      source  = "taliesins/hyperv"
-      version = "~> 1.0"
+    yandex = {
+      source  = "yandex-cloud/yandex"
+      version = ">= 0.13"
     }
-    null = {
-      source  = "hashicorp/null"
-      version = "~> 3.0"
-    }    
+    datadog = {
+      source  = "DataDog/datadog"
+      version = "3.57.0"
+    }
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.4.0"
+    }
   }
-
-  required_version = ">= 0.13"
 }
 
-provider "hyperv" {
-  # Способ 1: Локальный Hyper-V (по умолчанию)
-  # Не требует дополнительных настроек для локального хоста
+provider "yandex" {
+  token     = var.yc_token
+  cloud_id  = var.yc_cloud_id
+  folder_id = var.yc_folder_id
+  zone      = var.yc_zone
+}
 
-  # # Способ 2: Удаленный Hyper-V через WinRM
-  host        = (var.hyperv_host)
-  port        = (var.hyperv_port)
-  user        = (var.hyperv_user)
-  password    = (var.hyperv_password)
-  https       = (var.hyperv_https)
-  insecure    = (var.hyperv_insecure)
-  use_ntlm    = (var.hyperv_use_ntlm)
-  script_path = (var.hyperv_script_path)
-  timeout     = (var.hyperv_timeout)
-  
-  # tls_insecure = true
-
-  # # Способ 3: Через SSH - не работает
-  # ssh_host = var.hyperv_host
-  # ssh_user = var.hyperv_user
-  # ssh_password = var.hyperv_password
-  # ssh_port = var.hyperv_ssh_port
+provider "datadog" {
+  api_key = var.datadog_api_key
+  app_key = var.datadog_app_key
+  api_url = var.datadog_api_url
 }
