@@ -1,5 +1,5 @@
 .idea
 del_*
-/terraform/.terraform
+.terraform
 *.lock.hcl
-terraform/terraform.tfvars
+terraform/secret.auto.tfvars
