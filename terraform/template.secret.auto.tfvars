@@ -6,7 +6,7 @@ yc_zone      = "<your_availability_zone>"
 yc_service_account_id = "<your_service_account_id>"
 
 vm_login         = "<your_compute_VMs_login>"
-# ssh_pub_key_path = "<your/path/to/public_key>"
+ssh_pub_key_path = "<your/path/to/public_key>"
 
 db_name     = "<your_db_name>"
 db_user     = "<your_db_user>"
