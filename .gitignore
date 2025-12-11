@@ -1,5 +1,6 @@
 .idea
 del_*
 .terraform
+.tfstate
 *.lock.hcl
 terraform/secret.auto.tfvars
