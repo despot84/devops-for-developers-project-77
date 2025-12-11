@@ -21,7 +21,7 @@ make a-install-deps
 
 3. Настройка
 Добавить данные в файл ```terraform/secret.auto.tfvars```
-
+Пример файла находится ```terraform/secret.auto.tfvars.template```
 
 ### Как запустить приложение
 
