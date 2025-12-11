@@ -28,7 +28,7 @@ make a-install-deps
 **Клонируйте репозиторий**
 
 ```bash
-git clone git@github.com:despot84/devops-for-developers-project-77/.git
+git clone https://github.com/despot84/devops-for-developers-project-77.git
 ```
 
 Создать файл vault_password.txt
