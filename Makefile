@@ -3,29 +3,29 @@ ping:
 
 
 init:
-	terraform init -backend-config=secret.backend.tfvars
+	terraform/terraform init -backend-config=sterraform/ecret.backend.tfvars
 
 i-upgrade:
-	terraform init -upgrade -backend-config=secret.backend.tfvars
+	terraform/terraform init -upgrade -backend-config=terraform/secret.backend.tfvars
 
 i-migrate:
-	terraform init -migrate-state -backend-config=secret.backend.tfvars
+	terraform/terraform init -migrate-state -backend-config=terraform/secret.backend.tfvars
 
 plan:
-	terraform plan
+	terraform/terraform plan
 
 apply:
-	terraform apply
+	terraform/terraform apply
 
 destroy:
-	terraform destroy
+	terraform/terraform destroy
 
 show:
-	terraform show
+	terraform/terraform show
 
 graph:
-	terraform graph
-	
+	terraform/terraform graph
+
 install-roles:
 	ansible-galaxy install -r ./ansible/requirements.yml
 
