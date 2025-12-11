@@ -35,29 +35,16 @@ git clone https://github.com/despot84/devops-for-developers-project-77.git
 ```
 echo "ваш_пароль" > ./ansible/vault_password.txt
 ```
-
-Создать файл ./ansible/group_vars/webservers/vault.yml
+**Инфраструктура(terraform)**
 ```
-ansible-vault create ./ansible/group_vars/webservers/vault.yml --vault-password-file ./ansible/vault_password.txt
-```
-Вставить содержимое:
-```
-apps_localhost: localhost
-vault_datadog_api_key: your_datadog_api_key
+make t-init
 
-vault_some_db_postgres: you_postgress_host
-vault_some_db_database: db
-vault_some_db_username: postgres
-vault_some_db_password: postgres
-vault_some_db_port: 5432
+make t-apply
 ```
-Нажмите Esc, чтобы выйти из режима редактирования.
-Введите :wq и нажмите Enter для сохранения и выхода.
 
-**Выполнить**
-
+**Развертывание (Ansible)**
 ```bash
-make install-role
+make a-install-role
 
-make redmine-deploy
+make a-redmine-deploy
 ```
