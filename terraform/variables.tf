@@ -42,6 +42,21 @@ variable "ssh_pub_key_path" {
   sensitive = false
 }
 
+variable "local_ssh_path" {
+  type      = string
+  sensitive = false
+}
+
+variable "domain_address" {
+  type      = string
+  sensitive = false
+}
+
+variable "vm_admin_username" {
+  type      = string
+  sensitive = false
+}
+
 variable "db_name" {
   type      = string
   sensitive = true
