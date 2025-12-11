@@ -13,10 +13,10 @@
       ansible.builtin.include_role:
         name: redmine_install
 
-    - name: Nginx install
-      when: "'load_balancer' in group_names"
-      ansible.builtin.include_role:
-        name: nginx_install
+    # - name: Nginx install
+    #   when: "'load_balancer' in group_names"
+    #   ansible.builtin.include_role:
+    #     name: nginx_install
 
     - name: Start datadog
       when: "'webservers' in group_names"
