@@ -29,3 +29,4 @@
       - /opt/redmine/files:/usr/src/redmine/files
       - /opt/redmine/plugins:/usr/src/redmine/plugins
   tags: deploy
+  become: true
