@@ -13,7 +13,7 @@ resource "yandex_compute_instance" "app-server-1" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd817i7o8012578061ra" # Ubuntu 22.04 LTS
+      image_id = var.yc_os_image_id
       size     = 15
       type     = "network-hdd"
     }
@@ -63,7 +63,7 @@ resource "yandex_compute_instance" "app-server-2" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd817i7o8012578061ra" # Ubuntu 22.04 LTS
+      image_id = var.yc_os_image_id
       size     = 15
       type     = "network-hdd"
     }
