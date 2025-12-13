@@ -4,3 +4,4 @@ del_*
 .tfstate
 *.lock.hcl
 terraform/secret.auto.tfvars
+ansible/vault_password.txt
