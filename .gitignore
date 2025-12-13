@@ -6,3 +6,4 @@ del_*
 terraform/secret.auto.tfvars
 ansible/vault_password.txt
 ansible/inventory.ini
+ansible/group_vars/webservers/vault.yml
