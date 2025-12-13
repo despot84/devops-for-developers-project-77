@@ -1,0 +1,7 @@
+vault_datadog_api_key: "${datadog_api_key}"
+
+vault_some_db_postgres: "${db_host}"
+vault_some_db_database: "${db_name}"
+vault_some_db_username: "${db_user}"
+vault_some_db_password: "${db_password}"
+vault_some_db_port: "${db_port}"
