@@ -16,6 +16,6 @@ resource "null_resource" "encrypt_secrets" {
   depends_on = [local_file.ansible_secrets]
 
   provisioner "local-exec" {
-    command = "ansible-vault encrypt ${local_file.ansible_secrets.filename} --vault-password-file ./ansible/vault_password.txt"
+    command = "ansible-vault encrypt ${local_file.ansible_secrets.filename} --vault-password-file ../ansible/vault_password.txt"
   }
 }
