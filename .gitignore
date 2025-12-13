@@ -5,3 +5,4 @@ del_*
 *.lock.hcl
 terraform/secret.auto.tfvars
 ansible/vault_password.txt
+ansible/inventory.ini
