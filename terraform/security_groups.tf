@@ -23,7 +23,7 @@ resource "yandex_vpc_security_group" "devops-sg-balancer" {
     protocol       = "TCP"
     description    = "to-app-servers"
     port           = var.app_port
-    v4_cidr_blocks = ["192.168.0.0/24"] # Разрешаем всей подсети
+    v4_cidr_blocks = ["192.168.0.0/24"]
   }
 
   egress {
@@ -33,12 +33,13 @@ resource "yandex_vpc_security_group" "devops-sg-balancer" {
   }
 }
 
-# App servers security group - разрешает трафик от балансировщика
+# App servers security group - разрешает трафик и от балансировщика, и напрямую
 resource "yandex_vpc_security_group" "devops-sg-appservers" {
   name        = "devops-sg-appservers"
   description = "Security group for App Servers"
   network_id  = yandex_vpc_network.devops-network.id
 
+  # SSH доступ
   ingress {
     protocol       = "TCP"
     description    = "SSH access"
@@ -46,29 +47,38 @@ resource "yandex_vpc_security_group" "devops-sg-appservers" {
     v4_cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Разрешаем трафик от подсети балансировщика
+  # ДОСТУП НАПРЯМУЮ к приложению из внешней сети (для прямого доступа)
   ingress {
     protocol       = "TCP"
-    description    = "from-balancer-and-healthchecks"
+    description    = "Direct app access"
     port           = var.app_port
-    v4_cidr_blocks = ["192.168.0.0/24"] # Вся подсеть
+    v4_cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Для health checks
+  # Трафик от балансировщика (внутренний)
+  ingress {
+    protocol       = "TCP"
+    description    = "from-balancer"
+    port           = var.app_port
+    v4_cidr_blocks = ["192.168.0.0/24"]
+  }
+
+  # Health checks от Yandex Cloud
   ingress {
     protocol       = "TCP"
     description    = "healthchecks"
     port           = 30080
-    v4_cidr_blocks = ["198.18.235.0/24", "198.18.248.0/24"] # Yandex Cloud health check IPs
+    v4_cidr_blocks = ["198.18.235.0/24", "198.18.248.0/24"]
   }
 
+  # Исходящий трафик
   egress {
     protocol       = "ANY"
     description    = "internet-access"
     v4_cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Разрешаем доступ к PostgreSQL
+  # Доступ к PostgreSQL
   egress {
     protocol       = "TCP"
     description    = "to-postgresql"
@@ -82,7 +92,6 @@ resource "yandex_vpc_security_group" "devops-sg-sql" {
   description = "Security group for PostgreSQL cluster"
   network_id  = yandex_vpc_network.devops-network.id
 
-  # Разрешаем доступ от подсети приложений
   ingress {
     protocol       = "TCP"
     description    = "from-app-servers"
