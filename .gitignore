@@ -10,3 +10,4 @@ ansible/group_vars/webservers/vault.yml
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/.terraform.tfstate.lock.info
+ansible/inventory.ini
