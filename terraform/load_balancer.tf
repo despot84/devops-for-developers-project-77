@@ -50,10 +50,10 @@ resource "yandex_alb_backend_group" "app_backend" {
     }
 
     healthcheck {
-      timeout             = "1s"
-      interval            = "2s"
-      healthy_threshold   = 2
-      unhealthy_threshold = 2
+      timeout             = "3s"
+      interval            = "5s"
+      healthy_threshold   = 1
+      unhealthy_threshold = 3
       http_healthcheck {
         path = "/"
       }
@@ -78,7 +78,7 @@ resource "yandex_alb_target_group" "app_targets" {
 resource "yandex_alb_virtual_host" "app_vhost" {
   name           = "app-vhost"
   http_router_id = yandex_alb_http_router.app_router.id
-  authority      = [var.domain_name]
+  # authority      = [var.domain_name]
 
   route {
     name = "main-route"
