@@ -1,12 +1,8 @@
-variable "yc_instance_count" {
-  default = 2
-}
-
 resource "yandex_compute_instance" "app-server" {
   count              = var.yc_instance_count
   name               = "app-server-${count.index + 1}"
   hostname           = "app-server-${count.index + 1}"
-  platform_id        = "standard-v3" # Intel Ice Lake
+  platform_id        = "standard-v3"
   zone               = var.yc_zone
   service_account_id = var.yc_service_account_id
 
@@ -47,8 +43,13 @@ resource "yandex_compute_instance" "app-server" {
   }
 
   scheduling_policy {
-    preemptible = true # прерываемая ВМ
+    preemptible = true
   }
 
-  depends_on = [yandex_mdb_postgresql_cluster.postgresql588, yandex_mdb_postgresql_database.db_name]
+  # Явно указываем зависимости
+  depends_on = [
+    yandex_vpc_security_group.devops-sg-appservers,
+    yandex_vpc_security_group.devops-sg-sql,
+    yandex_mdb_postgresql_cluster.postgresql588
+  ]
 }

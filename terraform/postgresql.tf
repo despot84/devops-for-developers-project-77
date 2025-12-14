@@ -18,11 +18,14 @@ resource "yandex_mdb_postgresql_cluster" "postgresql588" {
       disk_type_id       = "network-hdd"
       disk_size          = 10
     }
+    postgresql_config = {
+      max_connections = 100
+    }
   }
 
   host {
     zone             = var.yc_zone
-    name             = "PostgreSQL"
+    name             = "postgresql-host"
     subnet_id        = yandex_vpc_subnet.devops-subnet.id
     assign_public_ip = false
   }

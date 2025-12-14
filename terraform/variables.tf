@@ -105,3 +105,15 @@ variable "datadog_site" {
   type      = string
   sensitive = true
 }
+
+variable "yc_instance_count" {
+  description = "Number of VM instances"
+  type        = number
+  default     = 2
+}
+
+variable "app_port" {
+  description = "Port on which application runs"
+  type        = number
+  default     = 3000
+}

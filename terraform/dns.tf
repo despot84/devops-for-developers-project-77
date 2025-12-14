@@ -12,3 +12,11 @@ resource "yandex_dns_recordset" "alb-record" {
   ttl     = 600
   data    = [yandex_vpc_address.devops-alb-ip.external_ipv4_address[0].address]
 }
+
+resource "yandex_dns_recordset" "wildcard-record" {
+  zone_id = yandex_dns_zone.prod-zone.id
+  name    = "*.${var.domain_name}."
+  type    = "A"
+  ttl     = 600
+  data    = [yandex_vpc_address.devops-alb-ip.external_ipv4_address[0].address]
+}
