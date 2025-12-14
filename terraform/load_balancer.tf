@@ -50,8 +50,8 @@ resource "yandex_alb_backend_group" "app_backend" {
     }
 
     healthcheck {
-      timeout             = "3s"
-      interval            = "5s"
+      timeout             = "1s"
+      interval            = "3s"
       healthy_threshold   = 1
       unhealthy_threshold = 3
       http_healthcheck {
